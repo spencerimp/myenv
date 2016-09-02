@@ -25,42 +25,16 @@ let python_highlight_all=1
 set background=dark
 syntax on
 filetype on
-"""""Identiations"""""
-"Python identationfollowing PEP 8 standards"
-au BufNewFile,BufRead *.py
-  \set tabstop=4
-  \set softtabstop=4
-  \set shiftwidth=4
-  \set textwidth=79
-  \set expandtab
-  \set autoindent
-  \set fileformat=unix
-  \set colorcolumn=+1
-  \set wrap
-
-""Other files"
-"au BufNewFile,BufRead *.js, *.html, *.css
-    "\set tabstop=2
-    "\set softtabstop=2
-    "\set shiftwidth=2
 
 """"""PLUGINS"""""
 "taglist"
 filetype on
 filetype plugin on
 "exuberant-ctag config
-"On osx, install using brew install ctags-exuberant
-let Tlist_Ctags_Cmd='/opt/local/bin/ctags'
 
-"On Ubuntu, install it from source code, not apt-get
-" ./configure --prefix=$HOME
-" make && make install
-" export PATH=$HOME:$PATH
-let Tlist_Ctags_Cmd='~/bin/ctags'
 
 nnoremap <F6> :TlistToggle<CR>
 
-"Pathogen: see https://github.com/tpope/vim-pathogen"
 execute pathogen#infect()
 
 "pydiction (autocomplete python function)"

@@ -38,7 +38,7 @@ Install the lastest Anaconda
 
 	conda install ipython
 	conda install pip
-	conda scikit-learn
+	conda install scikit-learn
 	conda install pandas
 	conda install h5py
 	conda install pydot-ng
@@ -52,4 +52,4 @@ Create a separate environment for Python 2
 	# to activate
 	# source activate pyenv2
 	# to deactivate
-	# deactivate
+	# source deactivate
