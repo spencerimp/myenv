@@ -30,15 +30,8 @@ filetype on
 "taglist"
 filetype on
 filetype plugin on
-"exuberant-ctag config
-
 
 nnoremap <F6> :TlistToggle<CR>
-
-execute pathogen#infect()
-
-"pydiction (autocomplete python function)"
-let g:pydiction_location='~/.vim/vimfiles/pydiction/complete-dict'
 let g:pydiction_menu_height=20
 
 "Enable folding"
@@ -84,6 +77,7 @@ Plugin 'kien/ctrlp.vim'
 "Check manual at: https://github.com/ntpeters/vim-better-whitespace
 Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'vim-scripts/pydiction'
+" sudo apt-get install exuberant-ctags
 Plugin 'vim-scripts/taglist.vim'
 Plugin 'tpope/vim-fugitive' " git
 Plugin 'hynek/vim-python-pep8-indent'
@@ -114,7 +108,6 @@ set laststatus=2
 "NERDTred (tree structured hardy file browser) showcuts"
 "see https://github.com/scroolose/nerdtree.git"
 nnoremap <F5> :NERDTreeToggle<CR>
-
 
 " automatically remove the trailing spaces upon read and save
 au BufRead * :StripWhitespace
