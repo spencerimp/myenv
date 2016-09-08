@@ -64,3 +64,6 @@ Create a separate environment for Python 2
 	# source activate pyenv2
 	# to deactivate
 	# source deactivate
+# zsh configuration
+        cp ~/myenv/.zshrc ~/
+
