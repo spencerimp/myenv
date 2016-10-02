@@ -25,13 +25,46 @@ let python_highlight_all=1
 set background=dark
 syntax on
 filetype on
+"""""Identiations"""""
+"Python identationfollowing PEP 8 standards"
+au BufNewFile,BufRead *.py
+  \set tabstop=4
+  \set softtabstop=4
+  \set shiftwidth=4
+  \set textwidth=79
+  \set expandtab
+  \set autoindent
+  \set fileformat=unix
+  \set colorcolumn=+1
+  \set wrap
+
+""Other files"
+"au BufNewFile,BufRead *.js, *.html, *.css
+    "\set tabstop=2
+    "\set softtabstop=2
+    "\set shiftwidth=2
 
 """"""PLUGINS"""""
 "taglist"
 filetype on
 filetype plugin on
+"exuberant-ctag config
+"On osx, install using brew install ctags-exuberant
+"let Tlist_Ctags_Cmd='/opt/local/bin/ctags'
 
-nnoremap <F6> :TlistToggle<CR>
+"On Ubuntu, install it from source code, not apt-get
+" ./configure --prefix=$HOME
+" make && make install
+" export PATH=$HOME:$PATH
+"let Tlist_Ctags_Cmd='~/bin/ctags'
+
+"nnoremap <F6> :TlistToggle<CR>
+
+"Pathogen: see https://github.com/tpope/vim-pathogen"
+execute pathogen#infect()
+
+"pydiction (autocomplete python function)"
+let g:pydiction_location='~/.vim/vimfiles/pydiction/complete-dict'
 let g:pydiction_menu_height=20
 
 "Enable folding"
@@ -69,7 +102,8 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'scrooloose/syntastic'
-Plugin 'nvie/vim-flake8'
+Plugin 'nvie/vim-flake8' " pip install flake8, <F7> to launch
+"Plugin 'nvie/vim-flake8' " pip install pylint
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdTree.git'
@@ -77,7 +111,6 @@ Plugin 'kien/ctrlp.vim'
 "Check manual at: https://github.com/ntpeters/vim-better-whitespace
 Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'vim-scripts/pydiction'
-" sudo apt-get install exuberant-ctags
 Plugin 'vim-scripts/taglist.vim'
 Plugin 'tpope/vim-fugitive' " git
 Plugin 'hynek/vim-python-pep8-indent'
@@ -99,6 +132,8 @@ Plugin 'elzr/vim-json'
 Plugin 'keith/swift.vim'
 Plugin 'lifepillar/pgsql.vim'
 Plugin 'mattn/emmet-vim' " html: check http://vimawesome.com/plugin/emmet-vim
+"Plugin 'SirVer/ultisnips'
+"Plugin 'honza/vim-snippets'
 "All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -126,19 +161,38 @@ let g:ycm_seed_identifiers_with_syntax = 1 " Completion for programming language
 let g:ycm_complete_in_comments = 1 " Completion in comments
 let g:ycm_complete_in_strings = 1 " Completion in string
 
-" python version check
+ " python version check
 if has('python')
         let g:jedi#force_py_version = 2
         let g:syntastic_python_python_exec = 'python2'
         let g:pymode_python = 'python2'
+        let snipsUsePythonVersion = 2
 elseif has('python3')
         let g:jedi#force_py_version = 3
         let g:syntastic_python_python_exec = 'python3'
         let g:pymode_python = 'python3'
-else
         let g:loaded_jedi = 1
+        let snipsUsePythonVersion = 3
 endif
 
+" syntastic (https://github.com/scrooloose/syntastic)
+"cd ~/.vim/bundle && \
+"git clone --depth=1 https://github.com/scrooloose/syntastic.git
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+let g:syntastic_python_pylint_args = '-E' "only show error
+let g:syntastic_check_on_wq = 0
+
+let g:syntastic_python_checkers = ['pylint']
+nnoremap <F8> :SyntasticCheck<CR> "F8 to launch pylint check
+nnoremap <F6> :SyntasticToggleMode<CR> "F6 to toggle off the message
+nnoremap <C-w> :let syntastic_python_pylint_args=''<CR> "Ctrl + w to show all types of message
+nnoremap <C-e> :let syntastic_python_pylint_args='-E'<CR> "Ctrl + e to show only the error
 " my favorite them
 colorscheme gruvbox
 
