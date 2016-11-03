@@ -4,7 +4,7 @@ set cindent
 set shiftround
 "replace tab with spaces"
 set expandtab
-"highlighted the search result"
+"highlighten the search result"
 set hlsearch
 "show temp result before complete the search query"
 set incsearch
@@ -73,7 +73,7 @@ set foldlevel=99
 "Use space to fold/unfold"
 nnoremap <space> za
 
-"Move curve into different windows
+"Move cursor into different windows
 nnoremap <C-Right> <C-w><Right>
 nnoremap <C-Left> <C-w><Left>
 nnoremap <C-Up> <C-w><Up>
@@ -186,14 +186,15 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 "let g:syntastic_check_on_open = 1
 let g:syntastic_python_pylint_args = '-E' "only show error
-"let g:syntastic_check_on_wq = 0
+let g:syntastic_check_on_wq = 0
 
 " pylint: good but slow python checker
+" check/create ~/.pylintrc
 let g:syntastic_python_checkers = ['pylint']
 nnoremap <F8> :SyntasticCheck<CR> "F8 to launch pylint check
 nnoremap <F6> :SyntasticToggleMode<CR> "F6 to toggle off the message
-nnoremap <C-w> :let syntastic_python_pylint_args=''<CR> "Ctrl + w to show all types of message
-nnoremap <C-e> :let syntastic_python_pylint_args='-E'<CR> "Ctrl + e to show only the error
+"nnoremap <C-w> :let syntastic_python_pylint_args=''<CR> "Ctrl + w to show all types of message
+"nnoremap <C-e> :let syntastic_python_pylint_args='-E'<CR> "Ctrl + e to show only the error
 
 " check ~/.config/flake8 for flake8 configuration
 " [flake8]
