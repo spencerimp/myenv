@@ -49,16 +49,16 @@ au BufNewFile,BufRead *.py
 filetype on
 filetype plugin on
 "exuberant-ctag config
-"On osx, install using brew install ctags-exuberant
-"let Tlist_Ctags_Cmd='/opt/local/bin/ctags'
+"In OSX, install using brew
+"brew install ctags-exuberant
 
-"On Ubuntu, install it from source code, not apt-get
+"In Ubuntu, install it from source code
+" wget http://prdownloads.sourceforge.net/ctags/ctags-5.8.tar.gz
+" tar -xvf ctags-5.8.tar.gz
+" cd ctags-5.8
 " ./configure --prefix=$HOME
 " make && make install
 " export PATH=$HOME:$PATH
-"let Tlist_Ctags_Cmd='~/bin/ctags'
-
-"nnoremap <F6> :TlistToggle<CR>
 
 "Pathogen: see https://github.com/tpope/vim-pathogen"
 execute pathogen#infect()
@@ -78,6 +78,10 @@ nnoremap <C-Right> <C-w><Right>
 nnoremap <C-Left> <C-w><Left>
 nnoremap <C-Up> <C-w><Up>
 nnoremap <C-Down> <C-w><Down>
+nnoremap <C-j> <C-w><j>
+nnoremap <C-k> <C-w><k>
+nnoremap <C-h> <C-w><h>
+nnoremap <C-l> <C-w><l>
 
 "Haskell"
 au BufEnter *.hs compiler ghc
@@ -103,7 +107,6 @@ Plugin 'tmhedberg/SimpylFold'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'nvie/vim-flake8' " pip install flake8, <F7> to launch
-"Plugin 'nvie/vim-flake8' " pip install pylint
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdTree.git'
@@ -111,7 +114,7 @@ Plugin 'kien/ctrlp.vim'
 "Check manual at: https://github.com/ntpeters/vim-better-whitespace
 Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'vim-scripts/pydiction'
-Plugin 'vim-scripts/taglist.vim'
+Plugin 'majutsushi/tagbar' " ctags plugin
 Plugin 'tpope/vim-fugitive' " git
 Plugin 'hynek/vim-python-pep8-indent'
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
@@ -124,6 +127,7 @@ Plugin 'djoshea/vim-matlab-fold'
 " colorschemes
 Plugin 'morhetz/gruvbox'
 Plugin 'w0ng/vim-hybrid'
+" other languages
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'pangloss/vim-javascript'
@@ -144,6 +148,9 @@ set laststatus=2
 "see https://github.com/scroolose/nerdtree.git"
 nnoremap <F5> :NERDTreeToggle<CR>
 
+" tagbar configuration
+nmap <F4> :TagbarToggle<CR>
+
 " automatically remove the trailing spaces upon read and save
 au BufRead * :StripWhitespace
 au BufWrite * :StripWhitespace
@@ -153,6 +160,12 @@ au BufWrite * :StripWhitespace
 " insert mode
 autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+
+" ultisnipis setting
+"let g:UltiSnipsExpandTrigger="<m>"
+"let g:UltiSnipsJumpForwardTrigger="<c-b>"
+"let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
 
 " YouCompleteMe settings
 let g:ycm_collect_identifiers_from_tags_files = 1 " Let YCM read tags from Ctags file
@@ -176,29 +189,31 @@ elseif has('python3')
 endif
 
 " syntastic (https://github.com/scrooloose/syntastic)
-"cd ~/.vim/bundle && \
-"git clone --depth=1 https://github.com/scrooloose/syntastic.git
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-"let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_open = 0
 let g:syntastic_python_pylint_args = '-E' "only show error
 let g:syntastic_check_on_wq = 0
 
-" pylint: good but slow python checker
-" check/create ~/.pylintrc
+" pylint: could be the state-of-the-art python checker
+" pip install pylint
+" check or create ~/.pylintrc
 let g:syntastic_python_checkers = ['pylint']
 nnoremap <F8> :SyntasticCheck<CR> "F8 to launch pylint check
 nnoremap <F6> :SyntasticToggleMode<CR> "F6 to toggle off the message
 "nnoremap <C-w> :let syntastic_python_pylint_args=''<CR> "Ctrl + w to show all types of message
 "nnoremap <C-e> :let syntastic_python_pylint_args='-E'<CR> "Ctrl + e to show only the error
 
-" check ~/.config/flake8 for flake8 configuration
+" check or create ~/.config/flake8 for flake8 configuration
 " [flake8]
 " ignore = E402
+
 " my favorite theme
+" To use this in termial, append this to the shell configuration
+" export TERM="xterm-256color"
 colorscheme gruvbox
 

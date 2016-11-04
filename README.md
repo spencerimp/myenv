@@ -64,6 +64,8 @@ Install the lastest Anaconda
 	conda install openblas
 	conda install -c menpo opencv3=3.1.0
 	pip install Theano
+	pip install flake8
+	pip install pylint
 
 Install Tensorflow following the guild on the official website
 
