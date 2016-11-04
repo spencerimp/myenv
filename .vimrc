@@ -135,6 +135,7 @@ Plugin 'tpope/vim-markdown'
 Plugin 'elzr/vim-json'
 Plugin 'keith/swift.vim'
 Plugin 'lifepillar/pgsql.vim'
+Plugin 'rizzatti/dash.vim' " works only in OSX
 Plugin 'mattn/emmet-vim' " html: check http://vimawesome.com/plugin/emmet-vim
 "Plugin 'SirVer/ultisnips'
 "Plugin 'honza/vim-snippets'
@@ -173,8 +174,10 @@ let g:ycm_use_ultisnips_completer = 1 " Default 1, just ensure
 let g:ycm_seed_identifiers_with_syntax = 1 " Completion for programming language's keyword
 let g:ycm_complete_in_comments = 1 " Completion in comments
 let g:ycm_complete_in_strings = 1 " Completion in string
+let g:ycm_server_keep_logfiles = 1
+let g:ycm_server_log_level = 'debug'
 
- " python version check
+" python version check
 if has('python')
         let g:jedi#force_py_version = 2
         let g:syntastic_python_python_exec = 'python2'
@@ -217,3 +220,38 @@ nnoremap <F6> :SyntasticToggleMode<CR> "F6 to toggle off the message
 " export TERM="xterm-256color"
 colorscheme gruvbox
 
+set mouse=a
+" other shutcuts
+"autocmd FileType python nnoremap <F3> :exec '!python' shellescape(@%, 1)<CR> "F3 to python <current.py>
+"autocmd FileType python nnoremap <F3> :exec '!python' %<CR> "F3 to python <current.py>
+"autocmd FileType python nnoremap <F3> :exec Shell python %<CR> "F3 to python <current.py>
+nnoremap <F3> :Shell python %<CR> "F3 to python <current.py>
+
+nnoremap <S-F6> :pclose<CR> "Shift + F6 to clese preview window
+nnoremap <F2> :source ~/.vimrc<CR> "F2 to reload configuration
+
+"" Execute the shell command and show the result in a new buffer/window
+command! -complete=shellcmd -nargs=+ Shell call s:RunShellCommand(<q-args>)
+function! s:RunShellCommand(cmdline)
+  let isfirst = 1
+  let words = []
+  for word in split(a:cmdline)
+    if isfirst
+      let isfirst = 0  " don't change first word (shell command)
+    else
+      if word[0] =~ '\v[%#<]'
+        let word = expand(word)
+      endif
+      let word = shellescape(word, 1)
+    endif
+    call add(words, word)
+  endfor
+  let expanded_cmdline = join(words)
+  botright new
+  setlocal buftype=nofile bufhidden=wipe nobuflisted noswapfile nowrap
+  "call setline(1, 'You entered:  ' . a:cmdline)
+  "call setline(2, 'Expanded to:  ' . expanded_cmdline)
+  "call append(line('$'), substitute(getline(2), '.', '=', 'g'))
+  silent execute '$read !'. expanded_cmdline
+  1
+endfunction
