@@ -196,6 +196,8 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
+
+let g:syntastic_mode_map = {'mode': 'passive', 'active_filetypes':[],'passive_filetypes':[]}
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
@@ -208,7 +210,7 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_python_checkers = ['pylint']
 nnoremap <F8> :SyntasticCheck<CR> "F8 to launch pylint check
 nnoremap <F6> :SyntasticToggleMode<CR> "F6 to toggle off the message
-"nnoremap <C-w> :let syntastic_python_pylint_args=''<CR> "Ctrl + w to show all types of message
+"nnoremap <C-t> :let syntastic_python_pylint_args=''<CR> "Ctrl + t to show all types of message
 "nnoremap <C-e> :let syntastic_python_pylint_args='-E'<CR> "Ctrl + e to show only the error
 
 " check or create ~/.config/flake8 for flake8 configuration
@@ -219,14 +221,8 @@ nnoremap <F6> :SyntasticToggleMode<CR> "F6 to toggle off the message
 " To use this in termial, append this to the shell configuration
 " export TERM="xterm-256color"
 colorscheme gruvbox
-
-set mouse=a
 " other shutcuts
-"autocmd FileType python nnoremap <F3> :exec '!python' shellescape(@%, 1)<CR> "F3 to python <current.py>
-"autocmd FileType python nnoremap <F3> :exec '!python' %<CR> "F3 to python <current.py>
-"autocmd FileType python nnoremap <F3> :exec Shell python %<CR> "F3 to python <current.py>
 nnoremap <F3> :Shell python %<CR> "F3 to python <current.py>
-
 nnoremap <S-F6> :pclose<CR> "Shift + F6 to clese preview window
 nnoremap <F2> :source ~/.vimrc<CR> "F2 to reload configuration
 
