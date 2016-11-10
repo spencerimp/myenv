@@ -64,18 +64,19 @@ Install the lastest Anaconda
 	conda install openblas
 	conda install -c menpo opencv3=3.1.0
 	pip install Theano
+	pip install scikit-image
 	pip install flake8
 	pip install pylint
 
-Install Tensorflow following the guild on the official website
+Install Tensorflow following the guide on the official website
 
 Create a separate environment for Python 2
 
 	conda create -n pyenv2 python=2.7
 	# to activate
-	# source activate pyenv2
+	source activate pyenv2
 	# to deactivate
-	# source deactivate
+	source deactivate
 # zsh configuration
     cp ~/myenv/.zshrc ~/
 
