@@ -41,10 +41,12 @@ Suggested Emojis
 | Emoji | Raw Emoji Code | Description |
 |:---:|:---:|---|
 | :art: | `:art:` | when improving the **format**/structure of the code |
-| :racehorse: | `:racehorse:` | when improving **performance** |
+| :rocket: | `:rocket:` | when improving **performance** |
+| :package: | `:package:` | when **refectoring** |
 | :books: | `:books:` | when writing **docs** |
-| :bug: | `:bug:` | when reporting a **bug**, with [`@FIXME`](https://github.com/slashsBin/styleguide-todo-grammar#bug-report)Comment Tag |
-| :ambulance: | `:ambulance:` | when fixing a **bug** |
+| :bug: | `:bug:` | when fixing a **bug** |
+| :ambulance: | `:ambulance:` | when reporting a **bug** |
+| :fire: | `:fire:` | when doing **deprecation** |
 | :penguin: | `:penguin:` | when fixing something on **Linux** |
 | :apple: | `:apple:` | when fixing something on **Mac OS** |
 | :checkered_flag: | `:checkered_flag:` | when fixing something on **Windows** |
@@ -68,7 +70,6 @@ Suggested Emojis
 | :bulb: | `:bulb:` | New **Idea**, with `@IDEA` Comment Tag |
 | :snowflake: | `:snowflake:` | changing **Configuration**, Usually together with :penguin: or :ribbon: or :rocket: |
 | :ribbon: | `:ribbon:` | Customer requested application **Customization**, with `@HACK` Comment Tag |
-| :rocket: | `:rocket:` | Anything related to Deployments/**DevOps** |
 | :elephant: | `:elephant:` | **PostgreSQL** Database specific(Migrations, Scripts, Extensions, ...)  |
 | :dolphin: | `:dolphin:` | **MySQL** Database specific(Migrations, Scripts, Extensions, ...) |
 

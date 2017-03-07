@@ -1,4 +1,4 @@
-Working environment settings
+Just a repository documenting the cheatsheet and environment settings
 
 Clone this repository to download files
 
@@ -9,28 +9,27 @@ Compile vim with python support
 
 	#[OSX]
 	brew install vim --with-python3 --with-python2
-    
+
     #[Ubuntu]
+    git clone https://github.com/vim/vim
     ./configure --with-features=huge \
                 --enable-multibyte \
                 --enable-rubyinterp \
                 --enable-python3interp \
-                --with-python3-config-dir=/usr/lib/python3.5/config \
-                --enable-gui=gtk2 --enable-cscope --prefix=/usr
+                --with-python3-config-dir=/usr/lib/python3.5/config\
+                --enable-cscope \
+                --prefix=/usr
+    # change the prefix to local path such $HOME/.local/ if you do not have superuser privilege
     sudo make install
-    
+
 In case of error
 
 [No Terminal Library Found when Compiling Vim]
     (http://askubuntu.com/questions/158344/no-terminal-library-found-when-compiling-vim)
-    
+
 To check whether python is supported
 
 	vim --version
-
-Install [Vundle](https://github.com/VundleVim/Vundle.vim) to handle the vim plugins
-
-	git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 Copy the .vimrc file
 
@@ -39,11 +38,6 @@ Copy the .vimrc file
 Open vim and type
 
 	:PluginInstall
-
-Copy the independent configuration for python files
-
-	mkdir ~/.vim/ftplugin
-	cp ~/myenv/ftplugin/python.vim ~/.vim/ftplugin/python.vim
 
 Check the comments in ~/.vimrc for details
 
@@ -54,7 +48,8 @@ Install the lastest Anaconda
 
 	conda update conda
 	conda update anaconda
-	conda install pip 
+	conda install -c anaconda cmake=3.3.1
+	conda install pip
 	conda install ipython
 	conda install pip
 	conda install scikit-learn
@@ -68,15 +63,46 @@ Install the lastest Anaconda
 	pip install flake8
 	pip install pylint
 
-Install Tensorflow following the guide on the official website
 
-Create a separate environment for Python 2
+Create a new environment for Python 2
 
 	conda create -n pyenv2 python=2.7
 	# to activate
 	source activate pyenv2
 	# to deactivate
 	source deactivate
-# zsh configuration
+
+Export the Anaconda environment
+
+    # the Anaconda-specific and pip-specific packages are under different sections
+    conda env export > environment.yml
+
+Import an Anaconda environment
+
+	conda create -f environment.yml
+
+# zsh
+Install zsh
+[https://github.com/robbyrussell/oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
+
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
     cp ~/myenv/.zshrc ~/
+
+# heroku
+Heroku can deploy you app to it platform. In order to deploy it, your app should contain
+
+- git
+- runtime.txt: the python [version](https://devcenter.heroku.com/articles/python-support)
+- requiremnets.txt: pip dependency
+- Procfile: web: gunicorn [youappname].wsgi
+
+- Log in: heroku login
+- create app on heroku platform: heroku create [youruniqueppname]
+
+Remember to check whether the remote heroku repository in added into git
+
+    git remote add heroku [the remote repository url]
+
+
+
 
