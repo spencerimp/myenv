@@ -25,25 +25,6 @@ let python_highlight_all=1
 set background=dark
 syntax on
 filetype on
-"""""Identiations"""""
-"Python identationfollowing PEP 8 standards"
-au BufNewFile,BufRead *.py
-  \set tabstop=4
-  \set softtabstop=4
-  \set shiftwidth=4
-  \set textwidth=79
-  \set expandtab
-  \set autoindent
-  \set fileformat=unix
-  \set colorcolumn=+1
-  \set wrap
-
-""Other files"
-"au BufNewFile,BufRead *.js, *.html, *.css
-    "\set tabstop=2
-    "\set softtabstop=2
-    "\set shiftwidth=2
-
 """"""PLUGINS"""""
 "taglist"
 filetype on
@@ -231,6 +212,9 @@ colorscheme gruvbox
 nnoremap <F3> :Shell python %<CR> "F3 to python <current.py>
 nnoremap <S-F6> :pclose<CR> "Shift + F6 to clese preview window
 nnoremap <F2> :source ~/.vimrc<CR> "F2 to reload configuration
+
+" emet
+let g:user_emmet_expandabbr_key = '<Tab>'
 
 "" Execute the shell command and show the result in a new buffer/window
 command! -complete=shellcmd -nargs=+ Shell call s:RunShellCommand(<q-args>)
