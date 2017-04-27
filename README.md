@@ -27,6 +27,8 @@ In case of error
 [No Terminal Library Found when Compiling Vim]
     (http://askubuntu.com/questions/158344/no-terminal-library-found-when-compiling-vim)
 
+    sudo apt-get build-dep vim
+
 To check whether python is supported
 
 	vim --version
@@ -80,6 +82,10 @@ Export the Anaconda environment
 Import an Anaconda environment
 
 	conda create -f environment.yml
+
+# Install Python 3 without Anaconda
+        sudo apt-get install python3-setuptools
+        sudo easy_install3 pip
 
 # zsh
 Install zsh

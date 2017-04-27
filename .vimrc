@@ -41,9 +41,6 @@ filetype plugin on
 " make && make install
 " export PATH=$HOME:$PATH
 
-"Pathogen: see https://github.com/tpope/vim-pathogen"
-execute pathogen#infect()
-
 "pydiction (autocomplete python function)"
 let g:pydiction_location='~/.vim/vimfiles/pydiction/complete-dict'
 let g:pydiction_menu_height=20
