@@ -12,14 +12,17 @@ Compile vim with python support
 
     #[Ubuntu]
     git clone https://github.com/vim/vim
-    ./configure --with-features=huge \
-                --enable-multibyte \
+    cd vim
+    ./configure --enable-multibyte \
                 --enable-rubyinterp \
+                --enable-pythoninterp \
                 --enable-python3interp \
-                --with-python3-config-dir=/usr/lib/python3.5/config\
+                --with-python3-config-dir=/Users/spencer/anaconda3/lib/python3.6/config-3.6m-darwin\
                 --enable-cscope \
-                --prefix=/usr
+                --with-features=huge \
+    
     # change the prefix to local path such $HOME/.local/ if you do not have superuser privilege
+    make
     sudo make install
 
 In case of error

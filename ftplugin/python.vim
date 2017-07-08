@@ -8,4 +8,3 @@ setlocal expandtab
 setlocal fileformat=unix
 "setlocal colorcolumn=+1
 setlocal wrap
-
