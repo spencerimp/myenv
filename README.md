@@ -20,7 +20,7 @@ Compile vim with python support
                 --with-python3-config-dir=/Users/spencer/anaconda3/lib/python3.6/config-3.6m-darwin\
                 --enable-cscope \
                 --with-features=huge \
-    
+
     # change the prefix to local path such $HOME/.local/ if you do not have superuser privilege
     make
     sudo make install
@@ -39,6 +39,12 @@ To check whether python is supported
 Copy the .vimrc file
 
 	cp ~/myenv/.vimrc ~/.vimrc
+
+Ininstall Vundle
+
+```
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+```
 
 Open vim and type
 
