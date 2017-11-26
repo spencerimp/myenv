@@ -8,7 +8,7 @@ set expandtab
 set hlsearch
 "show temp result before complete the search query"
 set incsearch
-"set fond"
+"set font"
 set gfn=Monaco:h14
 "show config"
 set ruler
@@ -23,12 +23,15 @@ set encoding=utf-8
 set clipboard=unnamed
 let python_highlight_all=1
 set background=dark
+"reload the modified buffers
+set autoread
 syntax on
-filetype on
+
 """"""PLUGINS"""""
-"taglist"
+syntax enable
 filetype on
 filetype plugin on
+"taglist"
 "exuberant-ctag config
 "In OSX, install using brew
 "brew install ctags-exuberant
@@ -41,9 +44,9 @@ filetype plugin on
 " make && make install
 " export PATH=$HOME:$PATH
 
-"pydiction (autocomplete python function)"
-let g:pydiction_location='~/.vim/vimfiles/pydiction/complete-dict'
-let g:pydiction_menu_height=20
+"Pathogen: see https://github.com/tpope/vim-pathogen"
+"execute pathogen#infect()
+
 
 "Enable folding"
 set foldmethod=indent
@@ -65,7 +68,7 @@ nnoremap <C-l> <C-w><l>
 au BufEnter *.hs compiler ghc
 
 "Javacomplete"
-setlocal omnifunc=javacomplete#Complete
+"setlocal omnifunc=javacomplete#Complete
 
 "Configuration of Vundle: type :PluginInstall in vim to install them"
 "Vundle: pip-like packages management system for vim"
@@ -79,19 +82,24 @@ call vundle#begin()
 "call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
-Plugin 'Vundle/Vundle.vim'
+Plugin 'gmarik/Vundle.vim'
 " Add all your plugins here
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'vim-scripts/indentpython.vim'
+Plugin 'vim-scripts/pydiction'
 Plugin 'scrooloose/syntastic'
 Plugin 'nvie/vim-flake8' " pip install flake8, <F7> to launch
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdTree.git'
 Plugin 'kien/ctrlp.vim'
+Plugin 'tpope/vim-surround'
+Plugin 'vim-scripts/SearchComplete'
+"Plugin 'klen/python-mode'
+"Plugin 'python-rope/ropevim'
+Plugin 'davidhalter/jedi-vim'
 "Check manual at: https://github.com/ntpeters/vim-better-whitespace
 Plugin 'ntpeters/vim-better-whitespace'
-Plugin 'vim-scripts/pydiction'
 Plugin 'majutsushi/tagbar' " ctags plugin
 Plugin 'tpope/vim-fugitive' " git
 Plugin 'hynek/vim-python-pep8-indent'
@@ -108,20 +116,40 @@ Plugin 'w0ng/vim-hybrid'
 " other languages
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'flazz/vim-colorschemes'
+Plugin 'altercation/vim-colors-solarized'
 Plugin 'pangloss/vim-javascript'
-Plugin 'tpope/vim-markdown'
+"Plugin 'godlygeek/tabular'
+"Plugin 'plasticboy/vim-markdown'
+"Plugin 'tpope/vim-markdown'
+"Plugin 'PProvost/vim-markdown-jekyll'
+Plugin 'tpope/vim-liquid'
+Plugin 'junegunn/geyo.vim'
 Plugin 'elzr/vim-json'
 Plugin 'keith/swift.vim'
 Plugin 'lifepillar/pgsql.vim'
+Plugin 'vim-scripts/SQLComplete.vim'
 Plugin 'rizzatti/dash.vim' " works only in OSX
 Plugin 'mattn/emmet-vim' " html: check http://vimawesome.com/plugin/emmet-vim
+Plugin 'junegunn/vim-emoji'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
-"All of your Plugins must be added before the following line
+Bundle 'ervandew/supertab'
+Plugin 'django.vim'
+Plugin 'tweekmonster/django-plus.vim'
+Plugin 'rstacruz/sparkup'
+" React.js
+Plugin 'mxw/vim-jsx'
+"Plugin 'avakhov/vim-yaml'
+"All ef your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
 
+"pydiction (autocomplete python function)"
+let g:pydiction_location='~/.vim/vimfiles/pydiction/complete-dict'
+let g:pydiction_menu_height=20
+
 " airline (the fancy tab bar)
+let g:airline_theme='hybrid'
 set laststatus=2
 "NERDTred (tree structured hardy file browser) showcuts"
 "see https://github.com/scroolose/nerdtree.git"
@@ -151,7 +179,6 @@ let g:UltiSnipsExpandTrigger = "<C-j>"
 let g:UltiSnipsJumpForwardTrigger = "<C-j>"
 let g:UltiSnipsJumpBackwardTrigger = "<C-k>"
 
-
 " YouCompleteMe settings
 let g:ycm_collect_identifiers_from_tags_files = 1 " Let YCM read tags from Ctags file
 let g:ycm_use_ultisnips_completer = 1 " Default 1, just ensure
@@ -160,6 +187,9 @@ let g:ycm_complete_in_comments = 1 " Completion in comments
 let g:ycm_complete_in_strings = 1 " Completion in string
 let g:ycm_server_keep_logfiles = 1
 let g:ycm_server_log_level = 'debug'
+
+
+let g:sql_type_default = 'pgsql'
 
 " python version check
 if has('python')
@@ -201,17 +231,43 @@ nnoremap <F6> :SyntasticToggleMode<CR> "F6 to toggle off the message
 " [flake8]
 " ignore = E402
 
+"Ultisnips
+let g:UltiSnipsListSnippets        = "<c-k>" "List possible snippets
+
 " my favorite theme
 " To use this in termial, append this to the shell configuration
 " export TERM="xterm-256color"
 colorscheme gruvbox
 " other shutcuts
 nnoremap <F3> :Shell python %<CR> "F3 to python <current.py>
-nnoremap <S-F6> :pclose<CR> "Shift + F6 to clese preview window
+nnoremap <S-F6> :pclose<CR> "Shift + F6 to close preview window
 nnoremap <F2> :source ~/.vimrc<CR> "F2 to reload configuration
+nnoremap T :tabe<CR> " Capital T to create new tab
+nnoremap H :tabprevious<CR> " Capital H to previous tab
+nnoremap L :tabnext<CR> " Capital L to next tab
 
 " emet
 let g:user_emmet_expandabbr_key = '<Tab>'
+
+" pymode
+"let g:pymode_python = 'python3'
+"let g:pymode_options_colorcolumn = 0
+
+" emoji completion when editing Markdown files
+augroup emoji_complete
+  autocmd!
+    autocmd FileType markdown setlocal completefunc=emoji#complete
+    augroup END
+
+" markdown and jekyll
+let g:vim_markdown_frontmatter = 1
+let g:vim_markdown_folding_disabled=1
+let g:vim_markdown_folding_style_pythonic = 1
+au BufNewFile,BufFilePre,BufRead *.md set syntax=markdown
+
+" Apply JSX syntax in .js files
+let g:jsx_ext_required = 0 " Allow JSX in normal JS files
+let g:syntastic_javascript_checkers = ['eslint']
 
 "" Execute the shell command and show the result in a new buffer/window
 command! -complete=shellcmd -nargs=+ Shell call s:RunShellCommand(<q-args>)

@@ -11,6 +11,8 @@ Compile vim with python support
 	brew install vim --with-python3 --with-python2
 
     #[Ubuntu]
+    sudo apt-get install build-essential libncurses5-dev libncursesw5-dev
+    sudo update-alternatives --config editor
     git clone https://github.com/vim/vim
     cd vim
     ./configure --enable-multibyte \
