@@ -7,40 +7,48 @@ Clone this repository to download files
 # vim
 Compile vim with python support
 
-	#[OSX]
-	brew install vim --with-python3 --with-python2
+```
+#[OSX]
+brew install vim --with-python3 --with-python2
 
-    #[Ubuntu]
-    sudo apt-get install build-essential libncurses5-dev libncursesw5-dev
-    sudo update-alternatives --config editor
-    git clone https://github.com/vim/vim
-    cd vim
-    ./configure --enable-multibyte \
-                --enable-rubyinterp \
-                --enable-pythoninterp \
-                --enable-python3interp \
-                --with-python3-config-dir=/Users/spencer/anaconda3/lib/python3.6/config-3.6m-darwin\
-                --enable-cscope \
-                --with-features=huge \
+#[Ubuntu]
+sudo apt-get install build-essential libncurses5-dev libncursesw5-dev
+sudo update-alternatives --config editor
+git clone https://github.com/vim/vim
+cd vim
+./configure --enable-multibyte \
+        --enable-rubyinterp \
+        --enable-pythoninterp \
+        --enable-python3interp \
+        --with-python3-config-dir=/Users/spencer/anaconda3/lib/python3.6/config-3.6m-darwin\
+        --enable-cscope \
+        --with-features=huge \
 
-    # change the prefix to local path such $HOME/.local/ if you do not have superuser privilege
-    make
-    sudo make install
+# change the prefix to local path such $HOME/.local/ if you do not have superuser privilege
+make
+sudo make install
+```
 
 In case of error
 
 [No Terminal Library Found when Compiling Vim]
-    (http://askubuntu.com/questions/158344/no-terminal-library-found-when-compiling-vim)
+(http://askubuntu.com/questions/158344/no-terminal-library-found-when-compiling-vim)
 
-    sudo apt-get build-dep vim
+```
+sudo apt-get build-dep vim
+```
 
 To check whether python is supported
 
-	vim --version
+```
+vim --version
+```
 
 Copy the .vimrc file
 
-	cp ~/myenv/.vimrc ~/.vimrc
+```
+cp ~/myenv/.vimrc ~/.vimrc
+```
 
 Ininstall Vundle
 
@@ -50,7 +58,9 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 Open vim and type
 
-	:PluginInstall
+```
+:PluginInstall
+```
 
 Check the comments in ~/.vimrc for details
 
