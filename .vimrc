@@ -59,10 +59,15 @@ nnoremap <C-Right> <C-w><Right>
 nnoremap <C-Left> <C-w><Left>
 nnoremap <C-Up> <C-w><Up>
 nnoremap <C-Down> <C-w><Down>
+
 nnoremap <C-j> <C-w><j>
 nnoremap <C-k> <C-w><k>
 nnoremap <C-h> <C-w><h>
 nnoremap <C-l> <C-w><l>
+
+
+nnoremap <C-s> <C-w><C-s>
+nnoremap <C-v> <C-w><C-v>
 
 "Haskell"
 au BufEnter *.hs compiler ghc
@@ -133,7 +138,10 @@ Plugin 'mattn/emmet-vim' " html: check http://vimawesome.com/plugin/emmet-vim
 Plugin 'junegunn/vim-emoji'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
-Bundle 'ervandew/supertab'
+Plugin 'ervandew/supertab'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'w0rp/ale'
+Plugin 'leafgarland/typescript-vim'
 Plugin 'django.vim'
 Plugin 'tweekmonster/django-plus.vim'
 Plugin 'rstacruz/sparkup'
@@ -157,6 +165,7 @@ nnoremap <F5> :NERDTreeToggle<CR>
 
 " tagbar configuration
 nmap <F4> :TagbarToggle<CR>
+nmap <F9> :ALEToggle<CR>
 
 " automatically remove the trailing spaces upon read and save
 au BufRead * :StripWhitespace
@@ -167,6 +176,10 @@ au BufWrite * :StripWhitespace
 " insert mode
 autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+
+" ale
+let g:ale_fix_on_save = 1
+let g:ale_linters = {'jsx': ['stylelint', 'eslint'], 'python': ['pylint']}
 
 " ultisnipis setting
 " make YCM compatible with UltiSnips (using supertab)
