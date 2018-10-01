@@ -27,6 +27,8 @@ set background=dark
 set autoread
 syntax on
 
+"leader key
+let mapleader = ";"
 """"""PLUGINS"""""
 syntax enable
 filetype on
