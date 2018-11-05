@@ -62,11 +62,10 @@ nnoremap <C-Left> <C-w><Left>
 nnoremap <C-Up> <C-w><Up>
 nnoremap <C-Down> <C-w><Down>
 
-nnoremap <C-j> <C-w><j>
-nnoremap <C-k> <C-w><k>
-nnoremap <C-h> <C-w><h>
-nnoremap <C-l> <C-w><l>
-
+nnoremap <C-j> <C-w><C-j>
+nnoremap <C-k> <C-w><C-k>
+nnoremap <C-h> <C-w><C-h>
+nnoremap <C-l> <C-w><C-l>
 
 nnoremap <C-s> <C-w><C-s>
 nnoremap <C-v> <C-w><C-v>
