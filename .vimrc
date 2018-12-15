@@ -67,6 +67,7 @@ nnoremap <C-k> <C-w><C-k>
 nnoremap <C-h> <C-w><C-h>
 nnoremap <C-l> <C-w><C-l>
 
+
 nnoremap <C-s> <C-w><C-s>
 nnoremap <C-v> <C-w><C-v>
 
@@ -95,6 +96,7 @@ Plugin 'vim-scripts/indentpython.vim'
 Plugin 'vim-scripts/pydiction'
 Plugin 'scrooloose/syntastic'
 Plugin 'nvie/vim-flake8' " pip install flake8, <F7> to launch
+Plugin 'google/yapf', { 'rtp': 'plugins/vim' }
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdTree.git'
@@ -148,7 +150,7 @@ Plugin 'tweekmonster/django-plus.vim'
 Plugin 'rstacruz/sparkup'
 " React.js
 Plugin 'mxw/vim-jsx'
-"Plugin 'avakhov/vim-yaml'
+Plugin 'avakhov/vim-yaml'
 "All ef your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -160,13 +162,46 @@ let g:pydiction_menu_height=20
 " airline (the fancy tab bar)
 let g:airline_theme='hybrid'
 set laststatus=2
+
+" Shortcuts
 "NERDTred (tree structured hardy file browser) showcuts"
 "see https://github.com/scroolose/nerdtree.git"
 nnoremap <F5> :NERDTreeToggle<CR>
 
+" emet
+let g:user_emmet_expandabbr_key = '<Tab>'
+
 " tagbar configuration
 nmap <F4> :TagbarToggle<CR>
+" explicitly set the flake8 activation to default setting <F7>
+autocmd FileType python map <buffer> <F7> :call Flake8()<CR>
+" pylint: could be the state-of-the-art python checker
+" pip install pylint
+" check or create ~/.pylintrc
+let g:syntastic_python_checkers = ['pylint']
+nnoremap <F6> :SyntasticToggleMode<CR> "F6 to toggle off the message
+nnoremap <F8> :SyntasticCheck<CR> "F8 to launch pylint check
+" ALE linters and ale fixers
 nmap <F9> :ALEToggle<CR>
+" Disable ALE fixer on save. Usefully when working on need no to be 100% compliant
+command! ALEToggleFixer execute "let g:ale_fix_on_save = get(g:, 'ale_fix_on_save', 0) ? 0 : 1"
+nmap <F10> :ALEToggleFixer<CR>
+
+
+" other shutcuts
+nnoremap <F3> :Shell python %<CR> "F3 to python <current.py>
+nnoremap <S-F6> :pclose<CR> "Shift + F6 to close preview window
+nnoremap <F2> :source ~/.vimrc<CR> "F2 to reload configuration
+nnoremap T :tabe<CR> " Capital T to create new tab
+nnoremap H :tabprevious<CR> " Capital H to previous tab
+nnoremap L :tabnext<CR> " Capital L to next tab
+
+" check or create ~/.config/flake8 for flake8 configuration
+" [flake8]
+" ignore = E402
+
+"Ultisnips
+let g:UltiSnipsListSnippets        = "<c-k>" "List possible snippets
 
 " automatically remove the trailing spaces upon read and save
 au BufRead * :StripWhitespace
@@ -179,8 +214,8 @@ autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
 " ale
-let g:ale_fix_on_save = 1
-let g:ale_linters = {'jsx': ['stylelint', 'eslint'], 'python': ['pylint']}
+let g:ale_fix_on_save = 0 " 0: don't call fixers such as yapf on save until we toggle it
+let g:ale_linters = {'jsx': ['stylelint', 'eslint'], 'python': ['pylint', 'flake8']}
 
 " ultisnipis setting
 " make YCM compatible with UltiSnips (using supertab)
@@ -232,40 +267,12 @@ let g:syntastic_check_on_open = 0
 let g:syntastic_python_pylint_args = '-E' "only show error
 let g:syntastic_check_on_wq = 0
 
-" pylint: could be the state-of-the-art python checker
-" pip install pylint
-" check or create ~/.pylintrc
-let g:syntastic_python_checkers = ['pylint']
-nnoremap <F8> :SyntasticCheck<CR> "F8 to launch pylint check
-nnoremap <F6> :SyntasticToggleMode<CR> "F6 to toggle off the message
-"nnoremap <C-t> :let syntastic_python_pylint_args=''<CR> "Ctrl + t to show all types of message
-"nnoremap <C-e> :let syntastic_python_pylint_args='-E'<CR> "Ctrl + e to show only the error
-
-" check or create ~/.config/flake8 for flake8 configuration
-" [flake8]
-" ignore = E402
-
-"Ultisnips
-let g:UltiSnipsListSnippets        = "<c-k>" "List possible snippets
 
 " my favorite theme
 " To use this in termial, append this to the shell configuration
 " export TERM="xterm-256color"
 colorscheme gruvbox
-" other shutcuts
-nnoremap <F3> :Shell python %<CR> "F3 to python <current.py>
-nnoremap <S-F6> :pclose<CR> "Shift + F6 to close preview window
-nnoremap <F2> :source ~/.vimrc<CR> "F2 to reload configuration
-nnoremap T :tabe<CR> " Capital T to create new tab
-nnoremap H :tabprevious<CR> " Capital H to previous tab
-nnoremap L :tabnext<CR> " Capital L to next tab
 
-" emet
-let g:user_emmet_expandabbr_key = '<Tab>'
-
-" pymode
-"let g:pymode_python = 'python3'
-"let g:pymode_options_colorcolumn = 0
 
 " emoji completion when editing Markdown files
 augroup emoji_complete
@@ -278,6 +285,9 @@ let g:vim_markdown_frontmatter = 1
 let g:vim_markdown_folding_disabled=1
 let g:vim_markdown_folding_style_pythonic = 1
 au BufNewFile,BufFilePre,BufRead *.md set syntax=markdown
+
+" Vagrantfile
+au BufRead,BufNewFile Vagrantfile set ft=ruby tabstop=2 shiftwidth=4
 
 " Apply JSX syntax in .js files
 let g:jsx_ext_required = 0 " Allow JSX in normal JS files
