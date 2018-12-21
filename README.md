@@ -108,6 +108,14 @@ Import an Anaconda environment
         sudo apt-get install python3-setuptools
         sudo easy_install3 pip
 
+# Atom
+
+Install JDK and set JAVA_HOME environment variable
+
+```
+apm install --packages-file atom_packages.txt
+```
+
 # zsh
 Install zsh
 [https://github.com/robbyrussell/oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
