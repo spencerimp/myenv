@@ -50,13 +50,18 @@ export CPPFLAGS=/usr/local/opt/openblas/include
 #export CPATH='/home/rzn941/cudnn4/include':$CPATH
 #export LIBRARY_PATH='/home/rzn941/cudnn4/lib64':$LD_LIBRARY_PATH
 
+export TERM="xterm-256color"
 alias mem="free -g | awk '/Mem:/{print $2}'"
 alias gitdiff='git diff --color | diff-so-fancy'
-alias cudnnver="python -c 'from theano.sandbox.cuda.dnn import version; print(version())'"
-alias rungpu0="THEANO_FLAGS='device=gpu0'"
-alias rungpu1="THEANO_FLAGS='device=gpu1'"
-alias rungpu2="THEANO_FLAGS='device=gpu2'"
+export EDITOR=vim
+#alias mvim='/Applications/MacVim.app/Contents/bin/mvim'
 
+# for fun
+alias ptt="ssh bbsu@ptt.cc"
 # showing that you are using screen or not
 if [ -n "$STY" ]; then export PS1="($STY) $PS1"; fi
 
+alias dps="docker ps"
+dex() {
+    docker exec -it "$1" bash
+}
