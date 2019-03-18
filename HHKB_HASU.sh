@@ -12,5 +12,5 @@ brew install dfu-programmer
 # http://www.tmk-kbd.com/tmk_keyboard/editor/unimap/?hhkb
 
 sudo dfu-programmer atmega32u4 erase
-sudo dfu-programmer atmega32u4 flash myspacefn.hex
+sudo dfu-programmer atmega32u4 flash HHKB_BT_spacefn.hex
 sudo dfu-programmer atmega32u4 reset
