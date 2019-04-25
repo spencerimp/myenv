@@ -107,7 +107,7 @@ Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'majutsushi/tagbar' " ctags plugin
 Plugin 'tpope/vim-fugitive' " git
 Plugin 'hynek/vim-python-pep8-indent'
-Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+"Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'bling/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 "Check https://github.com/Valloric/YouCompleteMe#mac-os-x-super-quick-installation"
@@ -140,13 +140,17 @@ Plugin 'honza/vim-snippets'
 Plugin 'ervandew/supertab'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'w0rp/ale'
-Plugin 'leafgarland/typescript-vim'
 Plugin 'django.vim'
 Plugin 'tweekmonster/django-plus.vim'
 Plugin 'rstacruz/sparkup'
 " React.js
 Plugin 'mxw/vim-jsx'
 Plugin 'vim-babel'
+
+" Angular
+Plugin 'leafgarland/typescript-vim'
+Plugin 'Quramy/tsuquyomi'
+Plugin 'jason0x43/vim-js-indent'
 
 "Plugin 'avakhov/vim-yaml'
 "All ef your Plugins must be added before the following line
@@ -162,6 +166,15 @@ set wildmode=list:longest
 
 " airline (the fancy tab bar)
 let g:airline_theme='hybrid'
+"let g:airline_theme='angr'
+"let g:airline_theme='base16'
+" need to manually install powerline_fonts: https://github.com/powerline/fonts
+" also configure mvim: https://github.com/vim-airline/vim-airline/issues/719
+" and iterm2 -> Profile -> Text ->  Use a different font for non-ASCII text
+"let g:airline_powerline_fonts = 1
+let g:airline_statusline_ontop=0
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#syntastic#enabled = 1
 set laststatus=2
 "NERDTred (tree structured hardy file browser) showcuts"
 "see https://github.com/scroolose/nerdtree.git"
@@ -175,7 +188,7 @@ nmap <F9> :ALEToggle<CR>
 
 " nerdcommenter
 " Add spaces after comment delimiters by default
-let g:NERDSpaceDelims = 1
+let g:NERDSpaceDelims = 0
 
 " Use compact syntax for prettified multi-line comments
 let g:NERDCompactSexyComs = 1
@@ -188,6 +201,19 @@ au BufRead * :StripWhitespace
 au BufWrite * :StripWhitespace
 
 au BufNewFile,BufRead Jenkinsfile setf groovy
+
+" Angular
+augroup FiletypeGroup
+    autocmd!
+    " .ts is a Typescript file
+    au BufNewFile,BufRead *.ts set filetype=typescript
+augroup END
+
+"if !exists('g:ycm_semantic_triggers')
+"  let g:ycm_semantic_triggers = {}
+"  endif
+"  let g:ycm_semantic_triggers['typescript'] = ['.']
+"let g:typescript_indent_disable = 1
 
 " ale
 let g:ale_fix_on_save = 1
@@ -259,6 +285,8 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['eslint']
 "let g:syntastic_javascript_eslint_exe = 'npm run lint --'
 
+let g:syntastic_typescript_chackers = ['eslint', 'tslint']
+
 highlight link SyntasticErrorSign SignColumn
 highlight link SyntasticWarningSign SignColumn
 highlight link SyntasticStyleErrorSign SignColumn
@@ -289,9 +317,15 @@ colorscheme gruvbox
 nnoremap <F3> :Shell python %<CR> "F3 to python <current.py>
 nnoremap <S-F6> :pclose<CR> "Shift + F6 to close preview window
 nnoremap <F2> :source ~/.vimrc<CR> "F2 to reload configuration
-nnoremap T :tabe<CR> " Capital T to create new tab
-nnoremap H :tabprevious<CR> " Capital H to previous tab
-nnoremap L :tabnext<CR> " Capital L to next tab
+
+" Capital B as shortcut of adding a buffer
+nnoremap B :badd<Space>
+" Capital H to previous buffer
+nnoremap H :bprevious<CR>
+" Capital L to next buffer
+nnoremap L :bnext<CR>
+" Delete the current buffer
+nnoremap <C-X> :bdelete<CR>
 
 " emet
 "let g:user_emmet_expandabbr_key = '<Tab>'
