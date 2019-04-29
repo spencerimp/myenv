@@ -116,6 +116,12 @@ Install JDK and set JAVA_HOME environment variable
 apm install --packages-file atom_packages.txt
 ```
 
+To export the packges
+
+```
+apm list --installed --bare > atom_packages.txt
+```
+
 # zsh
 Install zsh
 [https://github.com/robbyrussell/oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
