@@ -111,7 +111,7 @@ Plugin 'hynek/vim-python-pep8-indent'
 Plugin 'bling/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 "Check https://github.com/Valloric/YouCompleteMe#mac-os-x-super-quick-installation"
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 Plugin 'djoshea/vim-matlab'
 Plugin 'djoshea/vim-matlab-fold'
 " colorschemes
@@ -151,6 +151,7 @@ Plugin 'vim-babel'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'Quramy/tsuquyomi'
 Plugin 'jason0x43/vim-js-indent'
+Plugin 'Quramy/vim-js-pretty-template'
 
 "Plugin 'avakhov/vim-yaml'
 "All ef your Plugins must be added before the following line
@@ -171,7 +172,7 @@ let g:airline_theme='hybrid'
 " need to manually install powerline_fonts: https://github.com/powerline/fonts
 " also configure mvim: https://github.com/vim-airline/vim-airline/issues/719
 " and iterm2 -> Profile -> Text ->  Use a different font for non-ASCII text
-"let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 1
 let g:airline_statusline_ontop=0
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#syntastic#enabled = 1
@@ -188,7 +189,7 @@ nmap <F9> :ALEToggle<CR>
 
 " nerdcommenter
 " Add spaces after comment delimiters by default
-let g:NERDSpaceDelims = 0
+let g:NERDSpaceDelims = 1
 
 " Use compact syntax for prettified multi-line comments
 let g:NERDCompactSexyComs = 1
@@ -196,9 +197,9 @@ let g:NERDCompactSexyComs = 1
 " Align line-wise comment delimiters flush left instead of following code indentation
 let g:NERDDefaultAlign = 'left'
 
-" automatically remove the trailing spaces upon read and save
-au BufRead * :StripWhitespace
+" automatically remove the trailing spaces upon save
 au BufWrite * :StripWhitespace
+" let g:strip_whitespace_on_save = 1
 
 au BufNewFile,BufRead Jenkinsfile setf groovy
 
@@ -209,11 +210,11 @@ augroup FiletypeGroup
     au BufNewFile,BufRead *.ts set filetype=typescript
 augroup END
 
-"if !exists('g:ycm_semantic_triggers')
-"  let g:ycm_semantic_triggers = {}
-"  endif
-"  let g:ycm_semantic_triggers['typescript'] = ['.']
-"let g:typescript_indent_disable = 1
+
+" let g:tsuquyomi_disable_quickfix = 1
+let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
+" let g:tsuquyomi_disable_quickfix = 1
+let g:syntastic_typescript_checkers = ['tsuquyomi'] " You shouldn't use 'tsc' checker.
 
 " ale
 let g:ale_fix_on_save = 1
@@ -280,12 +281,12 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_loc_list_height = 5
 let g:syntastic_check_on_open = 0
 let g:syntastic_python_pylint_args = '-E' "only show error
-let g:syntastic_check_on_wq = 0
+let g:syntastic_check_on_wq = 1
 " for JS
 let g:syntastic_javascript_checkers = ['eslint']
 "let g:syntastic_javascript_eslint_exe = 'npm run lint --'
 
-let g:syntastic_typescript_chackers = ['eslint', 'tslint']
+" let g:syntastic_typescript_checkers = ['eslint', 'tslint']
 
 highlight link SyntasticErrorSign SignColumn
 highlight link SyntasticWarningSign SignColumn
@@ -297,8 +298,11 @@ highlight link SyntasticStyleWarningSign SignColumn
 " pip install pylint
 " check or create ~/.pylintrc
 let g:syntastic_python_checkers = ['pylint']
-nnoremap <F8> :SyntasticCheck<CR> "F8 to launch pylint check
-nnoremap <F6> :SyntasticToggleMode<CR> "F6 to toggle off the message
+
+"F8 to launch lint check
+nnoremap <F8> :SyntasticCheck<CR>
+"F6 to toggle off the message
+nnoremap <F6> :SyntasticToggleMode<CR>
 "nnoremap <C-t> :let syntastic_python_pylint_args=''<CR> "Ctrl + t to show all types of message
 "nnoremap <C-e> :let syntastic_python_pylint_args='-E'<CR> "Ctrl + e to show only the error
 
