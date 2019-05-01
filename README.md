@@ -64,6 +64,36 @@ Open vim and type
 
 Check the comments in ~/.vimrc for details
 
+# Atom
+
+To export the list
+
+```
+apm list --installed --bare > atom_packages.txt
+```
+
+To install from the list
+
+```
+apm install --packages-file atom_packages.txt
+```
+
+
+# VS Code extensions
+
+To export the list
+
+(macOS) Open VC code, CMD + P -> Install code command in Path
+
+```
+code --list-extensions > vscode-extensions.txt
+```
+
+To install from the list
+```
+cat vscode-extensions.txt | xargs -L 1 code --install-extension
+```
+
 # Anaconda and Python3
 Install the lastest Anaconda
 
