@@ -1,5 +1,6 @@
 ask-stack@2.2.0
 atom-beautify@0.33.4
+atom-csv-markdown@1.0.2
 atom-django@0.3.2
 atom-mermaid@3.3.1
 atom-pyspark@0.2.6
@@ -16,6 +17,7 @@ django-templates@0.5.0
 django-test-runner@0.5.0
 docblockr@0.13.7
 docker@0.8.0
+double-brackets-with-spaces@2.1.0
 emmet@2.4.3
 ex-mode@0.18.0
 file-icons@2.1.32
@@ -23,16 +25,18 @@ flask-snippets@0.3.3
 git-blame@1.8.0
 git-plus@8.6.3
 highlight-selected@0.16.0
+hyperclick@0.1.5
 ide-python@1.4.1
 intentions@1.1.5
 java-importer@1.4.1
-kite@0.156.0
+kite@0.161.0
 language-babel@2.85.0
 language-django@0.1.1
 language-pgsql@0.2.3
 language-sql-mysql@0.3.1
 linter@2.3.0
 linter-eslint@8.5.5
+linter-flake8@2.4.0
 linter-scss-lint@3.2.1
 linter-tslint@1.10.22
 linter-ui-default@1.7.1
@@ -49,6 +53,7 @@ python-tools@0.6.9
 python-yapf@0.14.0
 script@3.18.1
 sort-lines@0.19.0
+tablr@1.8.3
 todo-show@2.3.2
 tree-view-copy-relative-path@1.2.0
 vim-mode-plus@1.36.0

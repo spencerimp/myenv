@@ -62,6 +62,8 @@ Open vim and type
 :PluginInstall
 ```
 
+You may need to use python2 to compile YouCompleteMe
+
 Check the comments in ~/.vimrc for details
 
 # Atom
