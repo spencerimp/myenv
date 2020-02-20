@@ -112,6 +112,7 @@ Plugin 'bling/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 "Check https://github.com/Valloric/YouCompleteMe#mac-os-x-super-quick-installation"
 "Plugin 'Valloric/YouCompleteMe'
+"Plugin 'zxqfl/tabnine-vim'
 Plugin 'djoshea/vim-matlab'
 Plugin 'djoshea/vim-matlab-fold'
 " colorschemes
