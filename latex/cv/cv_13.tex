@@ -1,0 +1,182 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Wilson Resume/CV
+% XeLaTeX Template
+% Version 1.0 (22/1/2015)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Howard Wilson (https://github.com/watsonbox/cv_template_2004) with
+% extensive modifications by Vel (vel@latextemplates.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+\documentclass[11pt]{article} % Default font size
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+\thispagestyle{empty}
+% * <spencer.tengz@gmail.com> 2018-04-27T13:12:11.200Z:
+%
+% ^.
+\input{structure.tex} % Include the file specifying document layout
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+{\fontfamily{lmss}\selectfont
+
+
+%----------------------------------------------------------------------------------------
+%	NAME 
+%----------------------------------------------------------------------------------------
+
+\hspace{-1.2em}\title{ Spencer Teng } % Print the main header
+
+\noindent\begin{minipage}[t]{0.70\textwidth}
+\vspace{0.5em}
+\textbf{Machine Learning Engineer} \\
+
+Software engineer solving challenges with data and machine learning techniques. 
+%----------------------------------------------------------------------------------------
+%	Certificate
+%----------------------------------------------------------------------------------------
+
+% \section{Certificates}
+% \begin{itemize}
+% \item{Deep Learning Specialization - Coursera (License DCVAEL4SGCRC)}
+% \end{itemize}
+
+%----------------------------------------------------------------------------------------
+%	SKILLS SECTION
+%----------------------------------------------------------------------------------------
+\section{Skills}
+\textbf{Programming}\\
+Python 3 \\
+
+\textbf{Development}\\
+Git, Docker, SQL \\
+Keras, TensorFlow, OpenCV, Numpy, Pandas, Scikit-learn Matplotlib \\
+Django REST Framework, Linux/Unix, Scrum \\
+
+\textbf{Fields}\\
+Machine learning, Deep learning (computer vision), Backend development.
+% \skillgroup{Programming}
+% {
+% Python 3, Java, Matlab.
+% }
+% \skillgroup{Libraries}
+% {Git, Docker, Kubernetes, SQL, MongoDB, Scrum \\
+% % Keras, TensorFlow, Numpy, Pandas, Scikit-learn, Pygal, Matplotlib, Django REST Framework\\
+% Linux/Unix, AWS, GCP, Scrum.
+% }
+% \skillgroup{Fields}
+% {Machine learning, Deep learning (computer vision), Backend development.
+% }
+
+%----------------------------------------------------------------------------------------
+%	PERSONAL PROFILE AND CONTACT INFORMATION
+%----------------------------------------------------------------------------------------
+\end{minipage}\hspace{1mm}
+\begin{minipage}[t]{0.33\textwidth}
+\raisebox{\dimexpr-\height+\ht\strutbox}{\includegraphics[width=\textwidth]{profile.png}}
+\begin{tabbing} % Enables tabbing
+\hspace{3cm} \= \hspace{4cm} \= \kill % Spacing within the block
+% {\bf Nationality} \> Taiwan \\ % Nationality 
+% {\bf Address } \> \\
+% Gersonsvej 75 st th\\ % Address line 1
+% 2900, Hellerup \\
+% Denmark\\\\ % Address line 2
+% {\bf Date of Birth} \> \\
+% 14$^{th}$ December 1987 \\\\ % Date of birth 
+% {\bf Contact } \> \\
++45 50 12 28 50 \\ % Mobile phone
+spencer.tengz@gmail.com \\ % Email address
+https://www.linkedin.com/in/spencerimp/ \\ % LinkedIn
+\end{tabbing}
+\end{minipage}
+
+%----------------------------------------------------------------------------------------
+%	Experience
+%----------------------------------------------------------------------------------------
+
+\section{Experience}
+\job
+{Oct 2018 }{Present}
+{Data Science Lab, Nordea Bank, CPH, Denmark}
+{}
+{Machine Learning Engineer}
+{
+    Developing Innobot, the in-house Nordea virtual assistant technology.
+}
+
+\job
+{Aug 2017 }{Jun 2018}
+{GUTXY, Frederiksberg, Denmark}
+{}
+{Technical Co-founder}
+{
+Developed bioinformatics pipeline and webapps to analyze gut bacteria and produce a wellness report.\\ 
+InnoFounder incubator program in 2018 (acceptance rate: 13/102).
+}
+
+\job
+{Mar 2017 }{Present}
+{Upwork}
+{}
+{Machine Learning Engineer Freelancer}
+{
+Top-rated machine learning engineer using mainly Python, Keras, TensorFlow, and OpenCV.\\
+Projects include object detection, image recognition/segmentation, backend API development.
+}
+
+%------------------------------------------------
+
+\job
+{Feb 2016 }{Feb 2017}
+{Biomediq, CPH, Denmark}
+{}
+{Research Assistant}
+{
+Developed deep convolutional neural networks for brain MRI segmentation with Python and Keras.\\
+Published a book chapter in deep learning for medical image analysis.
+}
+
+\job
+{Aug 2011 }{Aug 2014}
+{Music AI Lab, Academic Sinica, Taipei, Taiwan}
+{}
+{Research Assistant}
+{
+Developed context-aware music recommendation for Android phones with SVM and collaborative filtering.\\
+Published two papers in international conference and journal.
+}
+%----------------------------------------------------------------------------------------
+%	EDUCATION SECTION
+%----------------------------------------------------------------------------------------
+\section{Education}
+\tabbedblock{
+\bf{2014-2016} \> M.Sc. Computer Science - \textbf{University of Copenhagen,} \\
+\>\+CPH, Denmark\\
+\textbf{Master Thesis}: Automated brain MRI segmentation with deep neural networks. \\ 
+}
+% %------------------------------------------------
+% \tabbedblock{
+% \bf{2006-2010} \> B.Sc. Computer Science - \textbf{National Taiwan Ocean University,} \\\>\+Keelung, Taiwan
+% }
+
+% %----------------------------------------------------------------------------------------
+% %	INTERESTS SECTION
+% %----------------------------------------------------------------------------------------
+
+% \section{Interests \& Learning}
+% Tennis, Cycling, Danish (modul 3)
+
+\end{document}
