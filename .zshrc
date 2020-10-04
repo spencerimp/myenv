@@ -65,3 +65,16 @@ alias dps="docker ps"
 dex() {
     docker exec -it "$1" bash
 }
+
+# remote jupyter server and ssh tunneling
+# alias port_forward='nohup ssh -N -f -L localhost:8889:localhost:8889 username:password@remote_server_ip'
+# alias remote_notebook_start='nohup ssh -f username:password@remote_server_ip "cd rne; . virtual_environment/bin/activate; jupyter notebook --no-browser --port=8889"; port_forward'
+# alias remote_notebook_stop='ssh username:password@remote_server_ip "pkill -u username jupyter"'
+# view rawRunning Jupyter Notebooks on Remote Servers
+
+alias fix-jupyter-kernel="python -m ipykernel install --user --name vetology --display-name \"Python3.6 (vetology)\""
+alias jupyter-server="jupyter notebook --port:8899"
+alias ssl-vetology="ssh -L 127.0.0.1:8000:127.0.0.1:8899 vetology-gpu"
+alias mount-gpudata="sshfs spencer@192.168.149.95:/home/spencer/ /Users/spencer/proj/upwork/vetology_root/server_data"
+# local laptop localhost:6006 to see the tensorboard
+alias ssltf-vetology="ssh -L 127.0.0.1:6006:127.0.0.1:6006 -L 127.0.0.1:8158:127.0.0.1:8888 vetology-gpu"

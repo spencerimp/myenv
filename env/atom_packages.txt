@@ -58,3 +58,8 @@ todo-show@2.3.2
 tree-view-copy-relative-path@1.2.0
 vim-mode-plus@1.36.0
 
+
+ask-stack@2.2.0
+atom-beautify@0.33.4
+atom-csv-markdown@1.0.2
+
