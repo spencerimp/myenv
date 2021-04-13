@@ -20,6 +20,7 @@
 %----------------------------------------------------------------------------------------
 \documentclass[11pt]{article} % Default font size
 \usepackage{graphicx}
+\usepackage{enumitem}
 \graphicspath{ {images/} }
 \thispagestyle{empty}
 % * <spencer.tengz@gmail.com> 2018-04-27T13:12:11.200Z:
@@ -40,11 +41,14 @@
 
 \hspace{-1.2em}\title{ Spencer Teng } % Print the main header
 
-\noindent\begin{minipage}[t]{0.70\textwidth}
+\noindent\begin{minipage}[t]{0.8\textwidth}
 \vspace{0.5em}
-\textbf{Machine Learning Engineer} \\
+%\textbf{Machine Learning Engineer} \\
 
-Software engineer solving challenges with data and machine learning techniques. 
+Versatile data scientist with multi-year hand-on experience building AI-powered applications such
+as music recommendation, medical image analysis, and chatbot. Goal-oriented, autonomous,
+and strong problem-solving engineer. Looking forward to a new journey in applied machine
+learning fields.
 %----------------------------------------------------------------------------------------
 %	Certificate
 %----------------------------------------------------------------------------------------
@@ -58,16 +62,19 @@ Software engineer solving challenges with data and machine learning techniques.
 %	SKILLS SECTION
 %----------------------------------------------------------------------------------------
 \section{Skills}
-\textbf{Programming}\\
-Python 3 \\
+%\textbf{Programming}\\
+%Python 3 \\
+%
+%\textbf{Development}\\
+%Git, Docker, SQL \\
+%Keras, TensorFlow, OpenCV, Numpy, Pandas, Scikit-learn Matplotlib \\
+%Django REST Framework, Linux/Unix, Scrum \\
 
-\textbf{Development}\\
-Git, Docker, SQL \\
-Keras, TensorFlow, OpenCV, Numpy, Pandas, Scikit-learn Matplotlib \\
-Django REST Framework, Linux/Unix, Scrum \\
+Python, Machine Learning, Deep learning, Keras, TensorFlow, Scikit-learn, Pandas, Matplotlib 
+Django REST Framework, Git, Docker, Jenkins, Linux/Unix, Scrum
 
-\textbf{Fields}\\
-Machine learning, Deep learning (computer vision), Backend development.
+%\textbf{Fields}\\
+%Machine learning, Deep learning (computer vision), Backend development.
 % \skillgroup{Programming}
 % {
 % Python 3, Java, Matlab.
@@ -85,10 +92,10 @@ Machine learning, Deep learning (computer vision), Backend development.
 %	PERSONAL PROFILE AND CONTACT INFORMATION
 %----------------------------------------------------------------------------------------
 \end{minipage}\hspace{1mm}
-\begin{minipage}[t]{0.33\textwidth}
-\raisebox{\dimexpr-\height+\ht\strutbox}{\includegraphics[width=\textwidth]{profile.png}}
+\begin{minipage}[t]{0.22\textwidth}
+\raisebox{\dimexpr-\height+\ht\strutbox}{\includegraphics[height=\textwidth, width=\textwidth]{profile.png}}
 \begin{tabbing} % Enables tabbing
-\hspace{3cm} \= \hspace{4cm} \= \kill % Spacing within the block
+\hspace{2cm} \= \hspace{2cm} \= \kill % Spacing within the block
 % {\bf Nationality} \> Taiwan \\ % Nationality 
 % {\bf Address } \> \\
 % Gersonsvej 75 st th\\ % Address line 1
@@ -97,9 +104,11 @@ Machine learning, Deep learning (computer vision), Backend development.
 % {\bf Date of Birth} \> \\
 % 14$^{th}$ December 1987 \\\\ % Date of birth 
 % {\bf Contact } \> \\
-+45 50 12 28 50 \\ % Mobile phone
+
+
 spencer.tengz@gmail.com \\ % Email address
-https://www.linkedin.com/in/spencerimp/ \\ % LinkedIn
+linkedin.com/in/spencerimp/ \\ % LinkedIn
++45 50 12 28 50 \\ % Mobile phone
 \end{tabbing}
 \end{minipage}
 
@@ -110,62 +119,68 @@ https://www.linkedin.com/in/spencerimp/ \\ % LinkedIn
 \section{Experience}
 \job
 {Oct 2018 }{Present}
-{Data Science Lab, Nordea Bank, CPH, Denmark}
+{\textbf{Machine Learning Engineer}}
 {}
-{Machine Learning Engineer}
+{Data Science Lab, Nordea Bank, CPH, Denmark}
 {
-    Developing Innobot, the in-house Nordea virtual assistant technology.
+ 
+    Developed Innova, Nordea in-house chatbot using Natural Language Processing techniques.
+    \begin{itemize}[itemsep=0pt]
+    	\item  Developed REST APIs to perform banking actions on behave of customers.
+    	\item  Automated machine learning retraining and deployment in production.
+    	\item  Model inference optimization to reduce ML API latency
+    	\item Tech stack: TensorFlow, Django Rest, Celery, Java Spring Boot, Elastic Stack, etc.
+    \end{itemize}
 }
 
 \job
 {Aug 2017 }{Jun 2018}
-{GUTXY, Frederiksberg, Denmark}
+{\textbf{Technical Co-founder}}
 {}
-{Technical Co-founder}
+{GUTXY, Frederiksberg, Denmark}
 {
-Developed bioinformatics pipeline and webapps to analyze gut bacteria and produce a wellness report.\\ 
-InnoFounder incubator program in 2018 (acceptance rate: 13/102).
+	Developed bioinformatics pipeline and webapps to analyze gut bacteria and produce a wellness report.\\ 
+	InnoFounder incubator program in 2018 (acceptance rate: 13/102).
 }
 
 \job
 {Mar 2017 }{Present}
-{Upwork}
+{\textbf{Machine Learning Engineer Freelancer}}
 {}
-{Machine Learning Engineer Freelancer}
+{Upwork}
 {
-Top-rated machine learning engineer using mainly Python, Keras, TensorFlow, and OpenCV.\\
-Projects include object detection, image recognition/segmentation, backend API development.
+	Top-rated machine learning engineer using mainly Python, Keras, TensorFlow, and OpenCV.\\
+	Projects include object detection, image recognition/segmentation, backend API development.
 }
 
 %------------------------------------------------
 
 \job
 {Feb 2016 }{Feb 2017}
-{Biomediq, CPH, Denmark}
+{\textbf{Research Assistant}}
 {}
-{Research Assistant}
+{Biomediq, CPH, Denmark}
 {
-Developed deep convolutional neural networks for brain MRI segmentation with Python and Keras.\\
-Published a book chapter in deep learning for medical image analysis.
+	Developed deep convolutional neural networks for brain MRI segmentation with Python and Keras.\\
+	Published a book chapter in deep learning for medical image analysis.
 }
 
 \job
 {Aug 2011 }{Aug 2014}
-{Music AI Lab, Academic Sinica, Taipei, Taiwan}
+{\textbf{Research Assistant}}
 {}
-{Research Assistant}
+{Music AI Lab, Academic Sinica, Taipei, Taiwan}
 {
-Developed context-aware music recommendation for Android phones with SVM and collaborative filtering.\\
-Published two papers in international conference and journal.
-}
+	Developed context-aware music recommendation for Android phones with SVM and collaborative filtering.\\
+	Published two papers in international conference and journal.
+	}
 %----------------------------------------------------------------------------------------
 %	EDUCATION SECTION
 %----------------------------------------------------------------------------------------
 \section{Education}
 \tabbedblock{
-\bf{2014-2016} \> M.Sc. Computer Science - \textbf{University of Copenhagen,} \\
-\>\+CPH, Denmark\\
-\textbf{Master Thesis}: Automated brain MRI segmentation with deep neural networks. \\ 
+\bf{2014-2016} \> M.Sc. Computer Science - University of Copenhagen \\
+\>\+Master Thesis: Automated brain MRI segmentation with deep neural networks. \\ 
 }
 % %------------------------------------------------
 % \tabbedblock{
