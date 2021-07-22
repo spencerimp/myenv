@@ -29,6 +29,8 @@ syntax on
 
 "leader key
 let mapleader = ";"
+"stop showing .swp exist message
+set noswapfile
 """"""PLUGINS"""""
 syntax enable
 filetype on
@@ -89,8 +91,8 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'vim-scripts/pydiction'
-"Plugin 'scrooloose/syntastic'
-Plugin 'vim-syntastic/syntastic'
+Plugin 'scrooloose/syntastic'
+" Plugin 'vim-syntastic/syntastic'
 Plugin 'nvie/vim-flake8' " pip install flake8, <F7> to launch
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'scrooloose/nerdcommenter'
@@ -218,8 +220,9 @@ let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
 let g:syntastic_typescript_checkers = ['tsuquyomi'] " You shouldn't use 'tsc' checker.
 
 " ale
-let g:ale_fix_on_save = 1
 let g:ale_linters = {'jsx': ['stylelint', 'eslint'], 'python': ['pylint']}
+let g:ale_fixers = {'python': ['remove_trailing_lines', 'trim_whitespace', 'black']}
+let g:ale_fix_on_save = 1
 
 " vim-instant-markdown
 let g:instant_markdown_slow = 1
@@ -333,7 +336,10 @@ nnoremap L :bnext<CR>
 nnoremap <C-X> :bdelete<CR>
 
 " emet
-"let g:user_emmet_expandabbr_key = '<Tab>'
+let g:user_emmet_expandabbr_key = '<Tab>'
+
+" neovim
+tnoremap <Esc> <C-\><C-n>
 
 " pymode
 "let g:pymode_python = 'python3'
