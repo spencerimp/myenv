@@ -1,0 +1,16 @@
+[Desktop Entry]
+Name=FileZillaPro
+GenericName=FTP client
+GenericName[da]=FTP-klient
+GenericName[de]=FTP-Client
+GenericName[fr]=Client FTP
+Comment=Download and upload files via FTP, FTPS and SFTP
+Comment[da]=Download og upload filer via FTP, FTPS og SFTP
+Comment[de]=Dateien über FTP, FTPS und SFTP übertragen
+Comment[fr]=Transférer des fichiers via FTP, FTPS et SFTP
+Exec="/home/spencer/apps/FileZillaPro/bin/filezilla" %f
+Terminal=false
+Icon=/home/spencer/apps/FileZillaPro/share/icons/hicolor/scalable/apps/filezilla_pro.svg
+Type=Application
+Categories=Network;FileTransfer;
+Version=1.0

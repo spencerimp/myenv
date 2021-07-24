@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Pycharm Ultimate Edition
+Icon=/home/spencer/apps/pycharm-professional-2019.1.4/pycharm-2019.1.4/bin/pycharm.svg
+Exec="/home/spencer/apps/pycharm-professional-2019.1.4/pycharm-2019.1.4/bin/pycharm.sh" %f
+Comment=Capable and Ergonomic IDE for Python
+Categories=Development;IDE;
+Terminal=false
+StartupWMClass=jetbrains-pycharm

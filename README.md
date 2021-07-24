@@ -162,27 +162,21 @@ apm list --installed --bare > atom_packages.txt
 ```
 
 # zsh
+
 Install zsh
 [https://github.com/robbyrussell/oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
 
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
     cp ~/myenv/.zshrc ~/
 
-# heroku
-Heroku can deploy you app to it platform. In order to deploy it, your app should contain
 
-- git
-- runtime.txt: the python [version](https://devcenter.heroku.com/articles/python-support)
-- requiremnets.txt: pip dependency
-- Procfile: web: gunicorn [youappname].wsgi
+# Ubuntu
 
-- Log in: heroku login
-- create app on heroku platform: heroku create [youruniqueppname]
-
-Remember to check whether the remote heroku repository in added into git
-
-    git remote add heroku [the remote repository url]
+Copy the custom desktop files in order to launch under Show Applications GUI
 
 
+```
+cp ubuntu/*desktop ~/.local/share/applications
+```
 
 
