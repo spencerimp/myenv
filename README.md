@@ -122,8 +122,31 @@ apm list --installed --bare > atom_packages.txt
 Install zsh
 [https://github.com/robbyrussell/oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
 
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-    cp ~/myenv/.zshrc ~/
+
+```
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+cp ~/myenv/.zshrc ~/
+
+```
+
+# Powerline
+
+Make the ZSH status code better
+
+https://caffeinedev.medium.com/customize-your-terminal-oh-my-zsh-on-ubuntu-18-04-lts-a9b11b63f2
+
+```
+git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
+```
+
+Add these line to .zshrc
+
+```
+ZSH_THEME="powerlevel9k/powerlevel9k"
+POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="▶"
+POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=""
+```
 
 # Font
 
