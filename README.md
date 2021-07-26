@@ -103,50 +103,6 @@ To install from the list
 cat vscode-extensions.txt | xargs -L 1 code --install-extension
 ```
 
-# Anaconda and Python3
-Install the lastest Anaconda
-
-[https://www.continuum.io/downloads](https://www.continuum.io/downloads)
-
-	conda update conda
-	conda update anaconda
-	conda install -c anaconda cmake=3.3.1
-	conda install pip
-	conda install ipython
-	conda install pip
-	conda install scikit-learn
-	conda install pandas
-	conda install h5py
-	conda install pydot-ng
-	conda install openblas
-	conda install -c menpo opencv3=3.1.0
-	pip install Theano
-	pip install scikit-image
-	pip install flake8
-	pip install pylint
-
-
-Create a new environment for Python 2
-
-	conda create -n pyenv2 python=2.7
-	# to activate
-	source activate pyenv2
-	# to deactivate
-	source deactivate
-
-Export the Anaconda environment
-
-    # the Anaconda-specific and pip-specific packages are under different sections
-    conda env export > environment.yml
-
-Import an Anaconda environment
-
-	conda create -f environment.yml
-
-# Install Python 3 without Anaconda
-        sudo apt-get install python3-setuptools
-        sudo easy_install3 pip
-
 # Atom
 
 Install JDK and set JAVA_HOME environment variable
@@ -169,6 +125,27 @@ Install zsh
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
     cp ~/myenv/.zshrc ~/
 
+# Font
+
+Install SourceCodePro font and set it for terminal and vim
+
+https://askubuntu.com/questions/193072/how-to-use-the-adobe-source-code-pro-font
+
+Basically, download the font from [Google Fonts](https://www.google.com/fonts)
+
+extract under **~/.local/share/fonts**
+
+```
+mkdir -p ~/.local/share/fonts
+unzip SourceCodePro.zip ~/.local/share/fonts
+fc-cache -f
+```
+
+Note that in .vimrc you will need to use space with escape char such as
+
+```
+set gfn=Source\ Code\ Pro:h14
+```
 
 # Ubuntu
 
