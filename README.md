@@ -100,6 +100,7 @@ code --list-extensions > vscode-extensions.txt
 
 To install from the list
 ```
+(in vscode Command Palette, cmd+shift+p) shell command to find Shell Command: Install 'code' command in PATH command
 cat vscode-extensions.txt | xargs -L 1 code --install-extension
 ```
 

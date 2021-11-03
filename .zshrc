@@ -62,9 +62,37 @@ alias ptt="ssh bbsu@ptt.cc"
 if [ -n "$STY" ]; then export PS1="($STY) $PS1"; fi
 
 alias dps="docker ps"
+alias dmg="docker images"
+alias docker-arch-ps='for i in `docker ps --format "{{.Image}}"` ; do docker image inspect $i --format "$i -> {{.Architecture}} : {{.Os}}" ;done';
+
+drun() {
+   usage="Run a Docker image (specified in the first argument) with bash shell. The container will be deleted once detached"
+   if [ "$#" -eq 0 ]
+   then
+       echo $usage
+       return
+   fi
+   docker run --rm -it --entrypoint /bin/bash "$1"
+}
 dex() {
+   usage="Execute bash from a container (specified in the first argument)."
+   if [ "$#" -eq 0 ]
+   then
+       echo $usage
+       return
+   fi
     docker exec -it "$1" bash
 }
+
+ZSH_THEME="powerlevel9k/powerlevel9k"
+POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="▶"
+POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=""
+
+# after installing openblas using homebrew
+export LDFLAGS="-L/opt/homebrew/opt/openblas/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/openblas/include"
+
 
 # remote jupyter server and ssh tunneling
 # alias port_forward='nohup ssh -N -f -L localhost:8889:localhost:8889 username:password@remote_server_ip'
@@ -78,3 +106,8 @@ alias ssl-vetology="ssh -L 127.0.0.1:8000:127.0.0.1:8899 vetology-gpu"
 alias mount-gpudata="sshfs spencer@192.168.149.95:/home/spencer/ /Users/spencer/proj/upwork/vetology_root/server_data"
 # local laptop localhost:6006 to see the tensorboard
 alias ssltf-vetology="ssh -L 127.0.0.1:6006:127.0.0.1:6006 -L 127.0.0.1:8158:127.0.0.1:8888 vetology-gpu"
+
+
+# development for your env below: CHECK BEFORE SAVING OUTSIDE LOCAL
+# source ~/.YOURCOMPANY/secrets.rc
+# source ~/.YOURCOMPANY/.zshrc
