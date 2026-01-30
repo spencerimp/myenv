@@ -1,3 +1,38 @@
+" ==============================================================================
+" Vim Configuration (.vimrc)
+" ==============================================================================
+" Legacy vim setup with Vundle plugins. For neovim, see nvim/init.lua
+"
+" INSTALLATION:
+"   1. cp ~/myenv/.vimrc ~/.vimrc
+"   2. git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+"   3. vim +PluginInstall +qall
+"
+" KEY BINDINGS:
+"   Leader key: ;
+"
+"   Navigation:
+"     Space           Toggle fold
+"     Ctrl+h/j/k/l    Window navigation
+"     Ctrl+arrows     Window navigation
+"     H / L           Previous / Next buffer
+"     B               Add buffer
+"     Ctrl+X          Delete buffer
+"
+"   Function Keys:
+"     F2              Reload .vimrc
+"     F3              Run Python file
+"     F4              Toggle Tagbar
+"     F5              Toggle NERDTree
+"     F6              Toggle Syntastic mode
+"     F7              Flake8 (Python)
+"     F8              Run Syntastic check
+"
+"   Plugins:
+"     gcc             Toggle comment (nerdcommenter)
+"
+" ==============================================================================
+
 set nu
 set cindent
 "Round indent to nearest shiftwidth multiple"
@@ -98,7 +133,6 @@ Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdTree.git'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
-Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-surround'
 Plugin 'vim-scripts/SearchComplete'
 "Plugin 'klen/pythen-mode'
@@ -142,7 +176,6 @@ Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'ervandew/supertab'
 Plugin 'terryma/vim-multiple-cursors'
-Plugin 'w0rp/ale'
 Plugin 'django.vim'
 Plugin 'tweekmonster/django-plus.vim'
 Plugin 'rstacruz/sparkup'
@@ -188,7 +221,6 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 
 " tagbar configuration
 nmap <F4> :TagbarToggle<CR>
-nmap <F9> :ALEToggle<CR>
 
 " nerdcommenter
 " Add spaces after comment delimiters by default
@@ -218,11 +250,6 @@ augroup END
 let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
 " let g:tsuquyomi_disable_quickfix = 1
 let g:syntastic_typescript_checkers = ['tsuquyomi'] " You shouldn't use 'tsc' checker.
-
-" ale
-let g:ale_linters = {'jsx': ['stylelint', 'eslint'], 'python': ['pylint']}
-let g:ale_fixers = {'python': ['remove_trailing_lines', 'trim_whitespace', 'black']}
-let g:ale_fix_on_save = 1
 
 " vim-instant-markdown
 let g:instant_markdown_slow = 1
