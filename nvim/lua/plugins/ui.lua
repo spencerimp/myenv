@@ -15,11 +15,11 @@
 --   :NvimTreeToggle         Toggle file tree
 --   :NvimTreeFindFile       Find current file in tree
 --
---   Inside nvim-tree:
+--   Inside nvim-tree (NERDTree-style):
 --     Enter     Open file
 --     o         Open file
---     v         Open in vertical split
---     s         Open in horizontal split
+--     s / S     Open in vertical split
+--     v / V     Open in horizontal split
 --     a         Create new file/directory
 --     d         Delete
 --     r         Rename
@@ -79,7 +79,27 @@ return {
     "nvim-tree/nvim-tree.lua",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
+      -- Custom keymaps to match NERDTree behavior
+      local function on_attach(bufnr)
+        local api = require("nvim-tree.api")
+        local function opts(desc)
+          return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+        end
+
+        -- Default mappings
+        api.config.mappings.default_on_attach(bufnr)
+
+        -- NERDTree-style: s/S = vertical split, v/V = horizontal split
+        pcall(vim.keymap.del, "n", "s", { buffer = bufnr })
+        pcall(vim.keymap.del, "n", "v", { buffer = bufnr })
+        vim.keymap.set("n", "s", api.node.open.vertical, opts("Open: Vertical Split"))
+        vim.keymap.set("n", "S", api.node.open.vertical, opts("Open: Vertical Split"))
+        vim.keymap.set("n", "v", api.node.open.horizontal, opts("Open: Horizontal Split"))
+        vim.keymap.set("n", "V", api.node.open.horizontal, opts("Open: Horizontal Split"))
+      end
+
       require("nvim-tree").setup({
+        on_attach = on_attach,
         view = {
           width = 30,
           side = "left",

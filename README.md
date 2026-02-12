@@ -257,6 +257,45 @@ Then set the font in your terminal emulator preferences.
 
 ---
 
+# Ghostty
+
+A fast, native terminal emulator with GPU acceleration.
+
+## Installation
+
+### macOS
+
+```bash
+brew install --cask ghostty
+```
+
+### Linux
+
+See [ghostty.org](https://ghostty.org/) for installation instructions.
+
+## Configuration
+
+```bash
+mkdir -p ~/.config/ghostty
+cp ~/myenv/ghostty/config ~/.config/ghostty/config
+
+# Alternative: use symlink to keep synced with repo
+# ln -s ~/myenv/ghostty/config ~/.config/ghostty/config
+```
+
+## Key Bindings
+
+| Key | Action |
+|-----|--------|
+| `Cmd+h` | Previous tab |
+| `Cmd+l` | Next tab |
+
+## Reload Config
+
+Press `Cmd+Shift+,` to reload the config without restarting.
+
+---
+
 # Ubuntu Desktop
 
 Copy custom `.desktop` files for application launchers:
