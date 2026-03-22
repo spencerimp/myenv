@@ -293,13 +293,3 @@ cp ~/myenv/ghostty/config ~/.config/ghostty/config
 ## Reload Config
 
 Press `Cmd+Shift+,` to reload the config without restarting.
-
----
-
-# Ubuntu Desktop
-
-Copy custom `.desktop` files for application launchers:
-
-```bash
-cp ~/myenv/ubuntu/*.desktop ~/.local/share/applications/
-```
