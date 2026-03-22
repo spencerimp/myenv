@@ -40,21 +40,14 @@ ZSH_THEME="robbyrussell"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git z)
+plugins=(git z tmux docker)
 
 source $ZSH/oh-my-zsh.sh
-
-export LDFLAGS=/usr/local/opt/openblas/lib
-export CPPFLAGS=/usr/local/opt/openblas/include
-#export LD_LIBRARY_PATH='/home/rzn941/cudnn4/lib64':$LD_LIBRARY_PATH
-#export CPATH='/home/rzn941/cudnn4/include':$CPATH
-#export LIBRARY_PATH='/home/rzn941/cudnn4/lib64':$LD_LIBRARY_PATH
 
 export TERM="xterm-256color"
 alias mem="free -g | awk '/Mem:/{print $2}'"
 alias gitdiff='git diff --color | diff-so-fancy'
 export EDITOR=vim
-#alias mvim='/Applications/MacVim.app/Contents/bin/mvim'
 
 # for fun
 alias ptt="ssh bbsu@ptt.cc"
@@ -92,21 +85,6 @@ POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=""
 # after installing openblas using homebrew
 export LDFLAGS="-L/opt/homebrew/opt/openblas/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/openblas/include"
-
-
-# remote jupyter server and ssh tunneling
-# alias port_forward='nohup ssh -N -f -L localhost:8889:localhost:8889 username:password@remote_server_ip'
-# alias remote_notebook_start='nohup ssh -f username:password@remote_server_ip "cd rne; . virtual_environment/bin/activate; jupyter notebook --no-browser --port=8889"; port_forward'
-# alias remote_notebook_stop='ssh username:password@remote_server_ip "pkill -u username jupyter"'
-# view rawRunning Jupyter Notebooks on Remote Servers
-
-alias fix-jupyter-kernel="python -m ipykernel install --user --name vetology --display-name \"Python3.6 (vetology)\""
-alias jupyter-server="jupyter notebook --port:8899"
-alias ssl-vetology="ssh -L 127.0.0.1:8000:127.0.0.1:8899 vetology-gpu"
-alias mount-gpudata="sshfs spencer@192.168.149.95:/home/spencer/ /Users/spencer/proj/upwork/vetology_root/server_data"
-# local laptop localhost:6006 to see the tensorboard
-alias ssltf-vetology="ssh -L 127.0.0.1:6006:127.0.0.1:6006 -L 127.0.0.1:8158:127.0.0.1:8888 vetology-gpu"
-
 
 # development for your env below: CHECK BEFORE SAVING OUTSIDE LOCAL
 # source ~/.YOURCOMPANY/secrets.rc
