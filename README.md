@@ -6,19 +6,20 @@ Personal environment configuration files for vim, neovim, zsh, and more.
 
 ```bash
 # 1. Clone this repo
-git clone https://github.com/spencerimp/myenv.git ~/myenv
+git clone https://github.com/spencerimp/myenv.git
+cd myenv
 
 # 2. Set up neovim (recommended)
 mkdir -p ~/.config
-ln -s ~/myenv/nvim ~/.config/nvim
+ln -s ./myenv/nvim ~/.config/nvim
 
 # 3. Set up vim (optional, for legacy vim)
-ln -s ~/myenv/.vimrc ~/.vimrc
+ln -s ./myenv/.vimrc ~/.vimrc
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 vim +PluginInstall +qall
 
 # 4. Set up zsh (optional)
-ln -s ~/myenv/.zshrc ~/.zshrc
+ln -s ./myenv/.zshrc ~/.zshrc
 ```
 
 > **Note**: Using symlinks (`ln -s`) keeps configs synced with the repo. Use `cp` instead if you want independent copies.
@@ -44,9 +45,9 @@ brew install neovim
 # Ubuntu
 sudo apt install neovim
 
-# Link config (or copy with: cp -r ~/myenv/nvim ~/.config/)
+# Link config (or copy with: cp -r ./nvim ~/.config/)
 mkdir -p ~/.config
-ln -s ~/myenv/nvim ~/.config/nvim
+ln -s ./myenv/nvim ~/.config/nvim
 
 # First launch - plugins auto-install
 nvim
@@ -178,7 +179,7 @@ The `.vimrc` works with regular vim using Vundle plugins.
 
 ```bash
 # Link .vimrc (or copy with: cp ~/myenv/.vimrc ~/.vimrc)
-ln -s ~/myenv/.vimrc ~/.vimrc
+ln -s ./myenv/.vimrc ~/.vimrc
 
 # Install Vundle
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
@@ -277,10 +278,10 @@ See [ghostty.org](https://ghostty.org/) for installation instructions.
 
 ```bash
 mkdir -p ~/.config/ghostty
-cp ~/myenv/ghostty/config ~/.config/ghostty/config
+cp ./ghostty/config ~/.config/ghostty/config
 
 # Alternative: use symlink to keep synced with repo
-# ln -s ~/myenv/ghostty/config ~/.config/ghostty/config
+# ln -s ./ghostty/config ~/.config/ghostty/config
 ```
 
 ## Key Bindings

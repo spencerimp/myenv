@@ -6,6 +6,11 @@ keybind = super+l=next_tab
 
 # panel Split
 keybind = super+shift+f=new_split:right
+keybind = super+shift+e=new_split:up
+keybind = super+shift+c=new_split:down
+
+# New tab
+keybind = super+t=new_tab
 
 
 # Split panel navigation
