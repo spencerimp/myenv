@@ -11,6 +11,7 @@ keybind = super+shift+c=new_split:down
 
 # New tab
 keybind = super+t=new_tab
+keybind = super+w=close_tab
 
 
 # Split panel navigation
