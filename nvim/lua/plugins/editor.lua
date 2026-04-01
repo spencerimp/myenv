@@ -20,6 +20,12 @@
 --------------------------------------------------------------------------------
 
 return {
+  -- Seamless navigation between tmux panes and vim splits
+  {
+    "christoomey/vim-tmux-navigator",
+    event = "VeryLazy",
+  },
+
   -- Surround (replaces vim-surround)
   {
     "kylechui/nvim-surround",
