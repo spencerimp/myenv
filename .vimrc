@@ -388,6 +388,9 @@ au BufNewFile,BufFilePre,BufRead *.md set syntax=markdown
 let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 let g:syntastic_javascript_checkers = ['eslint']
 
+" 2-space indent for specific filetypes
+autocmd FileType json,jsonl,css,html setlocal tabstop=2 shiftwidth=2 softtabstop=2
+
 "" Execute the shell command and show the result in a new buffer/window
 command! -complete=shellcmd -nargs=+ Shell call s:RunShellCommand(<q-args>)
 function! s:RunShellCommand(cmdline)
