@@ -13,6 +13,10 @@ keybind = super+shift+c=new_split:down
 keybind = super+t=new_tab
 keybind = super+w=close_tab
 
+# Clipboard
+keybind = super+c=copy_to_clipboard
+keybind = super+v=paste_from_clipboard
+
 
 # Split panel navigation
 keybind = super+alt+h=goto_split:left
