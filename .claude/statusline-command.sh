@@ -19,21 +19,24 @@ fi
 
 model=$(echo "$input" | jq -r '.model.display_name // empty')
 used=$(echo "$input" | jq -r '.context_window.used_percentage // empty')
-input_tokens=$(echo "$input" | jq -r '.context_window.current_usage.input_tokens // empty')
 ctx_size=$(echo "$input" | jq -r '.context_window.context_window_size // empty')
 
 ctx_info=""
-if [ -n "$used" ] && [ -n "$input_tokens" ] && [ -n "$ctx_size" ]; then
+if [ -n "$used" ] && [ -n "$ctx_size" ]; then
   # Format token counts as e.g. 12k/200k
   fmt_tokens() {
     local n=$1
     if [ "$n" -ge 1000 ]; then
-      printf "%.0fk" "$(echo "scale=1; $n / 1000" | bc)"
+      printf "%.0fk" "$(echo "scale=0; $n / 1000" | bc)"
     else
       printf "%d" "$n"
     fi
   }
-  used_fmt=$(fmt_tokens "$input_tokens")
+  # Derive used tokens from percentage × size — avoids the input_tokens bug
+  # where prompt caching makes input_tokens=1 while cache_read_input_tokens
+  # holds the bulk of the context.
+  used_tokens=$(echo "scale=0; $ctx_size * $used / 100" | bc)
+  used_fmt=$(fmt_tokens "$used_tokens")
   total_fmt=$(fmt_tokens "$ctx_size")
   ctx_info=" ctx:${used_fmt}/${total_fmt} ($(printf '%.0f' "$used")%)"
 elif [ -n "$used" ]; then
