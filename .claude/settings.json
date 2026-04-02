@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Write(./**)",
+      "Edit(./**)",
+      "MultiEdit(./**)"
+    ],
+    "defaultModel": "acceptEdits"
+  },
+  "model": "haiku",
+  "statusLine": {
+    "type": "command",
+    "command": "bash /home/spencer/.claude/statusline-command.sh"
+  },
+  "enabledPlugins": {
+    "telegram@claude-plugins-official": true
+  }
+}
