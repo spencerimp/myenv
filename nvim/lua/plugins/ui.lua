@@ -115,8 +115,8 @@ return {
           },
         },
         filters = {
-          dotfiles = false,
-          custom = { ".git", "node_modules", ".cache", "__pycache__" },
+          dotfiles = false,  -- Show hidden files/directories
+          custom = { "node_modules", ".cache", "__pycache__" },  -- Exclude only these
         },
         git = {
           enable = true,
